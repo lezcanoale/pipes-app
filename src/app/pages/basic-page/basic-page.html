@@ -1,5 +1,5 @@
 <app-title-header [title]="'Pipes Básicos'" [subtitle]="'Pipes incluidos en angular '" />
-<div class="stats stats-vertical lg:stats-horizontal shadow">
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
   <div class="stat">
     <div class="stat-title">Lowercase Pipe</div>
     <div class="stat-value">{{nameLower() | lowercase}}</div>
@@ -16,5 +16,27 @@
     <div class="stat-title">Titlecase Pipe</div>
     <div class="stat-value">{{fullName() | titlecase}}</div>
     <div class="stat-desc">{{fullName()}}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date Pipe</div>
+    <div class="stat-value">{{customDate() | date}}</div>
+    <div class="stat-desc">{{customDate()}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|long|GMT-6</div>
+    <div class="stat-value">{{customDate() | date:'long':'GMT-6'}}</div>
+    <div class="stat-desc">{{customDate()}}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Custom format</div>
+    <div class="stat-value">{{customDate() | date: 'yyyy/MM/dd, hh:mm'}}</div>
+    <div class="stat-desc">{{customDate()}}</div>
   </div>
 </div>
