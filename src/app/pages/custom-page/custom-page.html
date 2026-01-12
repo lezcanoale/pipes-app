@@ -1,1 +1,57 @@
-<p>custom-page works!</p>,
+<app-title-header title="Pipes personalizados" subtitle="Pipes no incluidos en Angular"/>
+<div class="stats shadow">
+  <div class="stat">
+    <div class="stat-title">ToggleCase Pipe</div>
+    <div class="stat-value">{{name() | toggleCase: toggleUpperValue()}}</div>
+    <div class="stat-desc">{{name()}}</div>
+    <button class="btn btn-primary mt-1" (click)="toggleUpper()">ToggleCase</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="my-2">
+  <h1>Pipes personalizados en acción</h1>
+  <div class="flex gap-2 justify-end w-full">
+    <button class="btn btn-primary">Por nombre</button>
+    <button class="btn btn-accent">Por volar</button>
+    <button class="btn btn-secondary">Por color </button>
+    <button class="btn btn-info">Por creador</button>
+  </div>
+</section>
+
+<div class="overflow-x-auto w-full">
+  <table class="table table-xs w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Puede volar</th>
+        <th>Color</th>
+        <th>Creador</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (hero of heroes(); track hero.id; let i=$index) {
+      <!-- row 1 -->
+      <tr>
+        <th>{{i+1}}</th>
+        <td>{{hero.name}}</td>
+        <td>
+          <span
+            class="text-xs w-44"
+            [class.text-success]="hero.canFly"
+            [class.text-accent]="!hero.canFly"
+            >{{hero.canFly | canFly}}</span></td>
+        <!-- <td [style.color]="hero.color | nameColor">{{hero.color | nameColor}}</td> -->
+         <td [style.color]="hero.color | textColor">{{hero.color | nameColor | titlecase}}</td>
+        <td [style.color]="hero"
+          [class.text-primary]="hero.creator === 0"
+          [class.text-accent]="hero.creator === 1"
+          >{{hero.creator | heroCreator}}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
