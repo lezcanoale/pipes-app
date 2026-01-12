@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { TitleHeaderComponent } from '../../components/title-header/title-header';
 import { Card } from '../../components/card/card';
 import {
+  AsyncPipe,
   I18nPluralPipe,
   I18nSelectPipe,
   JsonPipe,
@@ -10,6 +11,7 @@ import {
   TitleCasePipe,
   UpperCasePipe,
 } from '@angular/common';
+import { interval, map, tap } from 'rxjs';
 
 const client1 = {
   name: 'Alejandra',
@@ -37,6 +39,7 @@ const client2 = {
     UpperCasePipe,
     KeyValuePipe,
     TitleCasePipe,
+    AsyncPipe,
   ],
   templateUrl: './uncommon-page.html',
 })
@@ -74,4 +77,20 @@ export default class UncommonPageComponent {
     age: 25,
     address: 'Asunción, Paraguay',
   };
+
+  //AsyncPipe
+  promiseValue: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('Hay un error');
+      // resolve('Tenemos data en la promesa');
+      console.log('Promesa finalizada');
+    }, 3500);
+  });
+
+  //AsyncPipe con Observables
+
+  myObservableTimer = interval(2000).pipe(
+    map((value) => value + 1),
+    tap((value) => console.log('tap', value))
+  );
 }
