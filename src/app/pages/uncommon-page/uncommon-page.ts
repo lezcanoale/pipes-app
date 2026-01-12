@@ -7,6 +7,7 @@ import {
   JsonPipe,
   KeyValuePipe,
   SlicePipe,
+  TitleCasePipe,
   UpperCasePipe,
 } from '@angular/common';
 
@@ -35,6 +36,7 @@ const client2 = {
     JsonPipe,
     UpperCasePipe,
     KeyValuePipe,
+    TitleCasePipe,
   ],
   templateUrl: './uncommon-page.html',
 })

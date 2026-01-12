@@ -33,7 +33,7 @@
       @for (item of profile | keyvalue; track $index) {
       <li>
         <span class="text-primary">
-          <strong>{{item.key}}</strong>
+          <strong>{{item.key | titlecase}}</strong>
           {{item.value}}
         </span>
       </li>
