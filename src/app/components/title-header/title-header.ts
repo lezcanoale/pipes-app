@@ -6,6 +6,6 @@ import { Component, input } from '@angular/core';
   templateUrl: './title-header.html',
 })
 export class TitleHeaderComponent {
-  title = input.required<string>();
-  subtitle = input.required<string>();
+  title = input<string>();
+  subtitle = input<string>();
 }
